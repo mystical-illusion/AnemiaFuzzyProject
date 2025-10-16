@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anemia Diagnosis</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🩸 Anemia Detection System</h1>
+      <p>Enter patient parameters to get a fuzzy diagnosis.</p>
+
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <div class="flash-message">
+        {% for message in messages %} {{ message }} {% endfor %}
+      </div>
+      {% endif %} {% endwith %}
+
+      <form method="POST" action="{{ url_for('result') }}">
+        <div class="input-section">
+          <label for="hgb">HGB (g/dL):</label>
+          <input
+            type="number"
+            id="hgb"
+            name="hgb"
+            step="0.1"
+            placeholder="e.g. 10.5"
+            required
+          />
+
+          <label for="mcv">MCV (fL):</label>
+          <input
+            type="number"
+            id="mcv"
+            name="mcv"
+            step="0.1"
+            placeholder="e.g. 70"
+            required
+          />
+
+          <label for="mchc">MCHC (g/dL):</label>
+          <input
+            type="number"
+            id="mchc"
+            name="mchc"
+            step="0.1"
+            placeholder="e.g. 30"
+            required
+          />
+
+          <button type="submit">Run Diagnosis</button>
+        </div>
+      </form>
+
+      <div id="result-section">
+        <a href="{{ url_for('graph') }}" class="try-again-link"
+          >View Membership Function Graphs →</a
+        >
+      </div>
+    </div>
+
+    <footer>
+      <p>Developed with ❤️ using Flask & Fuzzy Logic</p>
+    </footer>
+  </body>
+</html>

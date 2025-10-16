@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Membership Graphs</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+    <div class="container graph-container">
+      <h1>📊 Fuzzy Membership Function Graphs</h1>
+      <p>Visual representation of the Hemoglobin, MCV, and MCHC fuzzy sets.</p>
+
+      {% for graph in graphs %}
+      <div class="plotly-graph">{{ graph | safe }}</div>
+      <hr style="margin: 30px 0" />
+      {% endfor %}
+
+      <div class="navigation-buttons">
+        <a href="{{ url_for('home') }}" class="try-again-link"
+          >← Go Back to Diagnosis</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

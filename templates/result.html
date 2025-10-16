@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagnosis Result</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container result-box">
+      <h1>Diagnosis Complete</h1>
+
+      <div id="result-section">
+        <p>
+          Input Data: HGB: <b>{{ hgb }}</b> g/dL | MCV: <b>{{ mcv }}</b> fL |
+          MCHC: <b>{{ mchc }}</b> g/dL
+        </p>
+
+        <hr />
+
+        <h2>Detected Anemia Type:</h2>
+        <p id="result" class="anemia-result">{{ diagnosis }}</p>
+
+        {% if plot_url %}
+        <img
+          src="{{ plot_url }}"
+          alt="Fuzzy Logic Defuzzification Plot"
+          style="max-width: 100%; margin-top: 20px; border: 1px solid #ccc"
+        />
+        {% endif %}
+      </div>
+
+      <div class="navigation-buttons">
+        <a href="{{ url_for('graph') }}" class="view-graph-btn"
+          >View Membership Function Graphs</a
+        >
+        <a href="{{ url_for('home') }}" class="try-again-link"
+          >← Enter New Data</a
+        >
+      </div>
+    </div>
+  </body>
+</html>
