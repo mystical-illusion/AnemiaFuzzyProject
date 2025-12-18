@@ -55,6 +55,7 @@ The system models real-world medical uncertainty using fuzzy membership function
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/mystical-illusion/Anemia_detection_fuzzyProject
+   git clone https://https://github.com/mystical-illusion/AnemiaFuzzyProject
    ```
+
 
